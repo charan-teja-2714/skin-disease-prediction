@@ -1,58 +1,16 @@
-# Dataset files
-dataset/
+# Dataset folder
 data/
-*.csv
-*.json
-*.xlsx
-*.xls
 
-# Image datasets
-*.jpg
-*.jpeg
-*.png
-*.bmp
-*.tiff
-*.gif
-
-# Compressed dataset files
-*.zip
-*.tar
-*.tar.gz
-*.rar
-*.7z
-
-# Allow model files
-!*.pth
-!*.pt
-!*.pkl
-!*.pickle
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
+# Virtual environments
 venv/
 .venv/
-pip-log.txt
-pip-delete-this-directory.txt
+env/
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
 
-# OS
+# OS files
 .DS_Store
 Thumbs.db
-
-# Logs
-*.log
-logs/
-
-# Temporary files
-*.tmp
-*.temp
