@@ -1,0 +1,28 @@
+FAIRNESS ANALYSIS REPORT - DEMO
+========================================
+
+Skin Tone: Light
+  Sample Size: 45
+  Malignant Detection Rate: 22.0%
+  Average Confidence: 89.0%
+  High Risk Rate: 18.0%
+
+Skin Tone: Medium
+  Sample Size: 38
+  Malignant Detection Rate: 26.0%
+  Average Confidence: 85.0%
+  High Risk Rate: 21.0%
+
+Skin Tone: Dark
+  Sample Size: 17
+  Malignant Detection Rate: 29.0%
+  Average Confidence: 81.0%
+  High Risk Rate: 24.0%
+
+FAIRNESS METRICS:
+--------------------
+Malignant Rate Std Dev: 0.029
+Confidence Std Dev: 0.033
+Max Malignant Rate Difference: 0.070
+
+Note: Lower standard deviation indicates more fair performance across groups.

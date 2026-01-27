@@ -1,0 +1,74 @@
+================================================================================
+COMPREHENSIVE SKIN CANCER ANALYSIS REPORT - DEMO
+================================================================================
+
+Analysis Date: 2026-01-27T21:04:57.242633
+Image: demo_lesion.jpg
+
+1. CLASSIFICATION RESULTS:
+----------------------------------------
+Predicted Diagnosis: Melanoma (MEL)
+Confidence: 87.0%
+Malignancy Probability: 91.0%
+Classification: MALIGNANT
+
+All Class Probabilities:
+  Melanoma (MEL): 87.0%
+  Melanocytic nevus (NV): 5.0%
+  Basal cell carcinoma (BCC): 4.0%
+  Actinic keratosis (AKIEC): 2.0%
+  Benign keratosis (BKL): 1.0%
+  Dermatofibroma (DF): 1.0%
+  Vascular lesion (VASC): 0.0%
+
+2. LESION SEGMENTATION:
+----------------------------------------
+Lesion Area: 23.0% of image
+Segmentation Confidence: 89.0%
+Lesion Area (pixels): 15,420
+
+3. ABCDE CLINICAL ANALYSIS:
+----------------------------------------
+A - Asymmetry Score: 0.720
+B - Border Irregularity: 0.680
+C - Color Variation: 0.850
+D - Diameter: 8.3 mm
+E - Evolution Risk: 0.740
+Overall ABCDE Score: 0.710
+
+Clinical Interpretation:
+  • High asymmetry detected - lesion is not symmetrical
+  • Highly irregular borders detected
+  • High color variation - multiple colors present
+  • Large diameter (8.3mm) - exceeds 6mm threshold
+  • High evolution risk - multiple concerning features
+
+4. RISK ASSESSMENT:
+----------------------------------------
+Overall Risk Level: HIGH
+Risk Score: 0.830
+
+Risk Factors Identified:
+  • Classified as Melanoma (MEL)
+  • High asymmetry detected
+  • Irregular borders detected
+  • High color variation
+  • Large diameter (8.3mm)
+  • Evolution indicators present
+
+CLINICAL RECOMMENDATION:
+----------------------------------------
+CRITICAL: Immediate medical attention required. Possible melanoma detected.
+
+5. FAIRNESS & BIAS ASSESSMENT:
+----------------------------------------
+Estimated Skin Tone: medium
+Fairness Group: medium
+Note: This analysis includes skin tone estimation to assess
+potential algorithmic bias across different demographic groups.
+
+DISCLAIMER:
+----------------------------------------
+This AI analysis is for research and educational purposes only.
+It should not replace professional medical diagnosis.
+Always consult a qualified dermatologist for medical advice.

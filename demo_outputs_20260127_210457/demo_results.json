@@ -1,0 +1,59 @@
+{
+  "image_path": "demo_lesion.jpg",
+  "timestamp": "2026-01-27T21:04:57.242633",
+  "segmentation": {
+    "lesion_area_ratio": 0.23,
+    "segmentation_confidence": 0.89,
+    "lesion_area_pixels": 15420,
+    "total_area_pixels": 67000
+  },
+  "classification": {
+    "predicted_class": "Melanoma (MEL)",
+    "predicted_class_index": 0,
+    "prediction_confidence": 0.87,
+    "is_malignant": true,
+    "malignancy_probability": 0.91,
+    "all_class_probabilities": {
+      "Melanoma (MEL)": 0.87,
+      "Melanocytic nevus (NV)": 0.05,
+      "Basal cell carcinoma (BCC)": 0.04,
+      "Actinic keratosis (AKIEC)": 0.02,
+      "Benign keratosis (BKL)": 0.01,
+      "Dermatofibroma (DF)": 0.01,
+      "Vascular lesion (VASC)": 0.0
+    }
+  },
+  "abcde_analysis": {
+    "asymmetry_score": 0.72,
+    "border_irregularity": 0.68,
+    "color_variation": 0.85,
+    "diameter_mm": 8.3,
+    "evolution_risk": 0.74,
+    "overall_abcde_score": 0.71,
+    "clinical_interpretation": [
+      "High asymmetry detected - lesion is not symmetrical",
+      "Highly irregular borders detected",
+      "High color variation - multiple colors present",
+      "Large diameter (8.3mm) - exceeds 6mm threshold",
+      "High evolution risk - multiple concerning features"
+    ]
+  },
+  "skin_tone": {
+    "estimated_skin_tone": "medium",
+    "fairness_group": "medium",
+    "note": "Skin tone estimation for bias assessment in AI predictions"
+  },
+  "risk_assessment": {
+    "overall_risk_score": 0.83,
+    "risk_level": "HIGH",
+    "risk_factors": [
+      "Classified as Melanoma (MEL)",
+      "High asymmetry detected",
+      "Irregular borders detected",
+      "High color variation",
+      "Large diameter (8.3mm)",
+      "Evolution indicators present"
+    ],
+    "recommendation": "CRITICAL: Immediate medical attention required. Possible melanoma detected."
+  }
+}
