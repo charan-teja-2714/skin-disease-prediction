@@ -1,0 +1,58 @@
+# Dataset files
+dataset/
+data/
+*.csv
+*.json
+*.xlsx
+*.xls
+
+# Image datasets
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tiff
+*.gif
+
+# Compressed dataset files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Allow model files
+!*.pth
+!*.pt
+!*.pkl
+!*.pickle
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
