@@ -43,5 +43,5 @@ for epoch in range(epochs):
 
     print(f"✅ Epoch {epoch+1} Accuracy: {correct/total:.4f}")
 
-torch.save(model.state_dict(), "efficientnet_masked.pth")
+torch.save(model.state_dict(), "efficientnet_best.pth")
 print("🎉 Classification model saved")

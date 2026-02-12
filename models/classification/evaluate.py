@@ -17,7 +17,7 @@ from models.classification.model import EfficientNetClassifier
 # ---------------- CONFIG ----------------
 IMAGE_DIR = os.path.join(PROJECT_ROOT, "data", "raw", "images")
 CSV_PATH = os.path.join(PROJECT_ROOT, "data", "raw", "metadata.csv")
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "efficientnet_masked.pth")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "efficientnet_best.pth")
 BATCH_SIZE = 16
 IMG_SIZE = 224
 
@@ -62,12 +62,12 @@ accuracy = accuracy_score(all_labels, all_preds)
 cm = confusion_matrix(all_labels, all_preds)
 report = classification_report(all_labels, all_preds, target_names=CLASS_NAMES)
 
-print("\n✅ MODEL EVALUATION RESULTS")
+print("\nMODEL EVALUATION RESULTS")
 print("----------------------------------")
 print(f"Overall Accuracy: {accuracy * 100:.2f}%")
 
-print("\n📊 Confusion Matrix:")
+print("\nConfusion Matrix:")
 print(cm)
 
-print("\n📄 Classification Report:")
+print("\nClassification Report:")
 print(report)

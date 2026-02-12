@@ -6,6 +6,7 @@ sys.path.append(PROJECT_ROOT)
 
 import cv2
 import torch
+import numpy as np
 import pandas as pd
 from collections import defaultdict
 
@@ -21,8 +22,12 @@ CLASS_NAMES = ["MEL", "NV", "BCC", "AKIEC", "BKL", "DF", "VASC"]
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
+# Load EfficientNet classifier
 model = EfficientNetClassifier(num_classes=7)
-model.load_state_dict(torch.load("../../models/classification/efficientnet_masked.pth", map_location=device))
+model.load_state_dict(torch.load(
+    os.path.join(PROJECT_ROOT, "models", "classification", "efficientnet_best.pth"),
+    map_location=device
+))
 model.to(device)
 model.eval()
 
@@ -56,14 +61,15 @@ for _, row in df.iterrows():
     img = torch.tensor(img, dtype=torch.float32).permute(2, 0, 1).unsqueeze(0).to(device)
 
     with torch.no_grad():
-        pred = model(img).argmax(1).item()
+        outputs = model(img)
+        pred = outputs.argmax(1).item()
 
     # Binary melanoma vs non-melanoma (clinical fairness)
     group_preds[tone].append(1 if pred == 0 else 0)
     group_labels[tone].append(1 if label == 0 else 0)
 
-print("\n📊 Fairness Evaluation (Melanoma Detection)")
+print("\nFairness Evaluation (Melanoma Detection) - EfficientNet")
 for tone in group_preds:
     stats = confusion_stats(group_preds[tone], group_labels[tone])
     fnr = false_negative_rate(stats)
-    print(f"{tone.capitalize()} skin → FNR: {fnr:.3f}")
+    print(f"{tone.capitalize()} skin -> FNR: {fnr:.3f}")

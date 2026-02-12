@@ -1,6 +1,13 @@
 # Dataset folder
 data/
 
+# Model weights
+*.pth
+*.pt
+*.h5
+*.ckpt
+*.pkl
+
 # Virtual environments
 venv/
 .venv/
@@ -10,7 +17,42 @@ env/
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+
+# Logs and reports
+logs/
+*.log
+model_report_*.txt
+model_results_*.json
+*_results.txt
+
+# Output files
+outputs/
+results/
+*.png
+*.jpg
+*.jpeg
 
 # OS files
 .DS_Store
 Thumbs.db
+
+# Environment variables
+.env
+.env.local
+
+# Build
+build/
+dist/
+*.egg-info/

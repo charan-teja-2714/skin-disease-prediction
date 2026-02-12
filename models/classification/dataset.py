@@ -3,13 +3,16 @@ import cv2
 import torch
 import pandas as pd
 from torch.utils.data import Dataset
+import albumentations as A
+from albumentations.pytorch import ToTensorV2
 
 CLASS_NAMES = ["MEL", "NV", "BCC", "AKIEC", "BKL", "DF", "VASC"]
 
 class ISICClassificationDataset(Dataset):
-    def __init__(self, image_dir, csv_path, img_size=224):
+    def __init__(self, image_dir, csv_path, img_size=224, transform=None):
         self.image_dir = image_dir
         self.img_size = img_size
+        self.transform = transform
 
         df = pd.read_csv(csv_path)
         self.samples = []
@@ -42,10 +45,14 @@ class ISICClassificationDataset(Dataset):
         image = cv2.imread(img_path)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-        image = cv2.resize(image, (self.img_size, self.img_size))
-        image = image / 255.0
-
-        image = torch.tensor(image, dtype=torch.float32).permute(2, 0, 1)
+        if self.transform:
+            transformed = self.transform(image=image)
+            image = transformed['image']
+        else:
+            image = cv2.resize(image, (self.img_size, self.img_size))
+            image = image / 255.0
+            image = torch.tensor(image, dtype=torch.float32).permute(2, 0, 1)
+        
         label = torch.tensor(label, dtype=torch.long)
 
         return image, label

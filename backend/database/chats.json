@@ -1,0 +1,16 @@
+[
+  {
+    "id": "msg_1770478058273",
+    "booking_id": "book_1770478050190",
+    "sender": "patient",
+    "message": "Hi",
+    "timestamp": "2026-02-07T20:57:38.273991"
+  },
+  {
+    "id": "msg_1770478058305",
+    "booking_id": "book_1770478050190",
+    "sender": "doctor",
+    "message": "Hello! Thank you for reaching out. I've reviewed the screening results from your upload. Good news — the analysis suggests this is likely benign. I'd recommend routine monitoring. Please re-check if you notice changes in size, shape, or color.",
+    "timestamp": "2026-02-07T20:57:38.305230"
+  }
+]

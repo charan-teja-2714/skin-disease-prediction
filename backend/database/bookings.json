@@ -1,0 +1,15 @@
+[
+  {
+    "id": "book_1770478050190",
+    "patient_name": "Prajnesh",
+    "doctor_id": "doc_5",
+    "consultation_type": "online",
+    "date": "2026-02-07",
+    "time_slot": "Mon 16:00-18:00",
+    "reason": "",
+    "disease_code": "",
+    "severity_tier": "",
+    "status": "confirmed",
+    "created_at": "2026-02-07T20:57:30.190307"
+  }
+]

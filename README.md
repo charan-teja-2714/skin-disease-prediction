@@ -52,7 +52,7 @@ python train.py
 ```
 **Expected Output:**
 - Training progress with accuracy metrics
-- Model saved as `efficientnet_masked.pth`
+- Model saved as `efficientnet_best.pth`
 - Training time: ~45-90 minutes
 
 ### Step 3: Evaluate Models
@@ -165,7 +165,7 @@ def evaluate_segmentation(model, test_loader, device):
 ```bash
 cd backend
 # Create main FastAPI app
-python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
+python -m uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ### Frontend Setup

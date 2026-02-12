@@ -23,9 +23,10 @@ seaborn>=0.12
 # Progress & Utilities
 tqdm>=4.66
 
-# Web Backend (later phases)
+# Web Backend
 fastapi>=0.110
 uvicorn>=0.27
+python-multipart>=0.0.6
 
 # Explainability & Medical Imaging (optional but useful)
 scikit-image>=0.22
