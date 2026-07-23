@@ -7,8 +7,8 @@ class EfficientNetV2LFeatureExtractor(nn.Module):
         super(EfficientNetV2LFeatureExtractor, self).__init__()
         # Load EfficientNetV2-L with the best available ImageNet weights
         # This model is significantly more powerful than standard EfficientNet
-        weights = models.EfficientNet_V2_L_Weights.IMAGENET1K_V1
-        self.base_model = models.efficientnet_v2_l(weights=weights)
+        weights = models.efficientnet_v3_L_Weights.IMAGENET1K_V1
+        self.base_model = models.efficientnet_v3_l(weights=weights)
         
         # Feature extraction backbone (all layers except classifier)
         self.features = self.base_model.features

@@ -16,7 +16,7 @@ from models.classification.model import EfficientNetClassifier
 # --------------------------------------------------
 # CONFIG
 # --------------------------------------------------
-MODEL_PATH = "../classification/efficientnet_best.pth"
+MODEL_PATH = "../classification/efficientnet_v5.pth"
 IMAGE_PATH = "../../data/raw/images/ISIC_0024312.jpg"  # CHANGE THIS
 IMG_SIZE = 224
 N_PASSES = 30  # more passes → better uncertainty

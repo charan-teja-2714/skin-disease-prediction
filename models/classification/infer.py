@@ -5,7 +5,7 @@ from model import EfficientNetClassifier
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 model = EfficientNetClassifier()
-model.load_state_dict(torch.load("efficientnet_best.pth", map_location=device))
+model.load_state_dict(torch.load("efficientnet_v5.pth", map_location=device))
 model.to(device)
 model.eval()
 

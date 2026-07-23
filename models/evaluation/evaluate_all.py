@@ -281,7 +281,7 @@ def main():
     CLASS_NAMES = ['MEL', 'NV', 'BCC', 'AKIEC', 'BKL', 'DF', 'VASC']
 
     # Classification evaluation
-    model_path = "../classification/efficientnet_best.pth"
+    model_path = "../classification/efficientnet_v5.pth"
 
     if os.path.exists(model_path):
         print("Starting Classification Evaluation...")

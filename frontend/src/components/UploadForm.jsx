@@ -354,7 +354,9 @@ function ResultsPanel({ result, onBookConsultation }) {
   const fairness = result.fairness;
   const quality = result.image_quality;
   const evolution = result.evolution;
+  const xai = result.explainability;
   const [segView, setSegView] = useState("overlay");
+  const [xaiView, setXaiView] = useState("gradcam_overlay");
 
   const handleBookClick = () => {
     if (onBookConsultation) {
@@ -480,6 +482,100 @@ function ResultsPanel({ result, onBookConsultation }) {
               <div style={s.bar}>
                 <div style={s.barFill(seg.lesion_coverage, "#10b981")} />
               </div>
+            </div>
+          )}
+
+          {/* XAI: GradCAM / GradCAM++ / SHAP */}
+          {xai && (
+            <div style={s.card}>
+              <div style={s.sectionTitle}>Visual Explainability (GradCAM / GradCAM++ / SHAP)</div>
+              <div style={{ fontSize: "13px", color: "var(--gray-500)", marginBottom: "12px" }}>
+                Heatmaps show which regions of the image drove the model's prediction.
+                Red = high activation, Blue = low or negative contribution (SHAP).
+              </div>
+
+              {/* Tab buttons */}
+              <div style={{ ...s.segToggle, flexWrap: "wrap", gap: "6px", marginBottom: "14px" }}>
+                {xai.gradcam && !xai.gradcam.error && (
+                  <>
+                    <button style={s.segBtn(xaiView === "gradcam_overlay")} onClick={() => setXaiView("gradcam_overlay")}>
+                      GradCAM Overlay
+                    </button>
+                    <button style={s.segBtn(xaiView === "gradcam_heat")} onClick={() => setXaiView("gradcam_heat")}>
+                      GradCAM Heatmap
+                    </button>
+                  </>
+                )}
+                {xai.gradcam_plus && !xai.gradcam_plus.error && (
+                  <>
+                    <button style={s.segBtn(xaiView === "gcpp_overlay")} onClick={() => setXaiView("gcpp_overlay")}>
+                      GradCAM++ Overlay
+                    </button>
+                    <button style={s.segBtn(xaiView === "gcpp_heat")} onClick={() => setXaiView("gcpp_heat")}>
+                      GradCAM++ Heatmap
+                    </button>
+                  </>
+                )}
+                {xai.shap && !xai.shap.error && (
+                  <button style={s.segBtn(xaiView === "shap")} onClick={() => setXaiView("shap")}>
+                    SHAP
+                  </button>
+                )}
+              </div>
+
+              {/* Image display */}
+              <div style={s.imgContainer}>
+                {xaiView === "gradcam_overlay" && xai.gradcam?.overlay_base64 && (
+                  <img src={`data:image/png;base64,${xai.gradcam.overlay_base64}`} alt="GradCAM overlay" style={s.segImage} />
+                )}
+                {xaiView === "gradcam_heat" && xai.gradcam?.heatmap_base64 && (
+                  <img src={`data:image/png;base64,${xai.gradcam.heatmap_base64}`} alt="GradCAM heatmap" style={s.segImage} />
+                )}
+                {xaiView === "gcpp_overlay" && xai.gradcam_plus?.overlay_base64 && (
+                  <img src={`data:image/png;base64,${xai.gradcam_plus.overlay_base64}`} alt="GradCAM++ overlay" style={s.segImage} />
+                )}
+                {xaiView === "gcpp_heat" && xai.gradcam_plus?.heatmap_base64 && (
+                  <img src={`data:image/png;base64,${xai.gradcam_plus.heatmap_base64}`} alt="GradCAM++ heatmap" style={s.segImage} />
+                )}
+                {xaiView === "shap" && xai.shap?.overlay_base64 && (
+                  <img src={`data:image/png;base64,${xai.shap.overlay_base64}`} alt="SHAP explanation" style={s.segImage} />
+                )}
+              </div>
+
+              {/* Legend */}
+              <div style={{ display: "flex", gap: "16px", marginTop: "10px", fontSize: "12px", color: "var(--gray-500)" }}>
+                {(xaiView === "gradcam_overlay" || xaiView === "gradcam_heat" || xaiView === "gcpp_overlay" || xaiView === "gcpp_heat") && (
+                  <>
+                    <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                      <span style={{ display: "inline-block", width: 12, height: 12, background: "#ff0000", borderRadius: 2 }} /> High activation
+                    </span>
+                    <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                      <span style={{ display: "inline-block", width: 12, height: 12, background: "#0000ff", borderRadius: 2 }} /> Low activation
+                    </span>
+                  </>
+                )}
+                {xaiView === "shap" && (
+                  <>
+                    <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                      <span style={{ display: "inline-block", width: 12, height: 12, background: "#ff0000", borderRadius: 2 }} /> Supports prediction
+                    </span>
+                    <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                      <span style={{ display: "inline-block", width: 12, height: 12, background: "#0000ff", borderRadius: 2 }} /> Against prediction
+                    </span>
+                  </>
+                )}
+              </div>
+
+              {/* Error fallback */}
+              {xai.gradcam?.error && (
+                <div style={{ ...s.errorBox, marginTop: "8px" }}>GradCAM error: {xai.gradcam.error}</div>
+              )}
+              {xai.gradcam_plus?.error && (
+                <div style={{ ...s.errorBox, marginTop: "8px" }}>GradCAM++ error: {xai.gradcam_plus.error}</div>
+              )}
+              {xai.shap?.error && (
+                <div style={{ ...s.errorBox, marginTop: "8px" }}>SHAP error: {xai.shap.error}</div>
+              )}
             </div>
           )}
 

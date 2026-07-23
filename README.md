@@ -52,7 +52,7 @@ python train.py
 ```
 **Expected Output:**
 - Training progress with accuracy metrics
-- Model saved as `efficientnet_best.pth`
+- Model saved as `efficientnet_v3.pth`
 - Training time: ~45-90 minutes
 
 ### Step 3: Evaluate Models

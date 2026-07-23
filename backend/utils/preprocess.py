@@ -54,7 +54,11 @@ def preprocess_image(image_bytes, device):
 
     image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
     image_rgb = cv2.resize(image_rgb, (IMG_SIZE, IMG_SIZE))
-    image_rgb = image_rgb / 255.0
+
+    # Must match training normalization exactly (albumentations A.Normalize default)
+    mean = np.array([0.485, 0.456, 0.406], dtype=np.float32)
+    std  = np.array([0.229, 0.224, 0.225], dtype=np.float32)
+    image_rgb = (image_rgb.astype(np.float32) / 255.0 - mean) / std
 
     tensor = torch.tensor(image_rgb, dtype=torch.float32)
     tensor = tensor.permute(2, 0, 1).unsqueeze(0)

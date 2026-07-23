@@ -11,7 +11,7 @@ sys.path.append('models/segmentation')
 def check_models():
     """Check if trained models exist"""
     seg_model = 'models/segmentation/unet_isic_gpu_safe.pth'
-    cls_model = 'models/classification/efficientnet_best.pth'
+    cls_model = 'models/classification/efficientnet_v5.pth'
 
     print("Checking for trained models...")
     print(f"Segmentation model: {'Found' if os.path.exists(seg_model) else 'Not found'}")
@@ -61,16 +61,16 @@ def get_model_info():
         try:
             from model import EfficientNetClassifier
             model = EfficientNetClassifier(num_classes=7)
-            state_dict = torch.load('models/classification/efficientnet_best.pth', map_location='cpu')
+            state_dict = torch.load('models/classification/efficientnet_v5.pth', map_location='cpu')
             model.load_state_dict(state_dict)
 
             total_params = sum(p.numel() for p in model.parameters())
             trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-            model_size = os.path.getsize('models/classification/efficientnet_best.pth') / (1024 * 1024)
+            model_size = os.path.getsize('models/classification/efficientnet_v5.pth') / (1024 * 1024)
 
             results['classification_model'] = {
                 'status': 'loaded',
-                'architecture': 'EfficientNet-B0 (timm)',
+                'architecture': 'EfficientNet-B3 (v5, ISIC 2018+2019, acc=91%)',
                 'total_parameters': total_params,
                 'trainable_parameters': trainable_params,
                 'model_size_mb': round(model_size, 2),
@@ -127,7 +127,7 @@ def test_single_inference():
         try:
             from model import EfficientNetClassifier
             model = EfficientNetClassifier(num_classes=7)
-            state_dict = torch.load('models/classification/efficientnet_best.pth', map_location='cpu')
+            state_dict = torch.load('models/classification/efficientnet_v5.pth', map_location='cpu')
             model.load_state_dict(state_dict)
             model.eval()
 

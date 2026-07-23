@@ -17,7 +17,7 @@ from models.classification.model import EfficientNetClassifier
 # ---------------- CONFIG ----------------
 IMAGE_DIR = os.path.join(PROJECT_ROOT, "data", "raw", "images")
 CSV_PATH = os.path.join(PROJECT_ROOT, "data", "raw", "metadata.csv")
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "efficientnet_best.pth")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "efficientnet_v5.pth")
 BATCH_SIZE = 16
 IMG_SIZE = 224
 

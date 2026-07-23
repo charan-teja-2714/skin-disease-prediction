@@ -2,11 +2,13 @@
 data/
 
 # Model weights
-*.pth
-*.pt
-*.h5
-*.ckpt
-*.pkl
+# Exclude models over 100 MB (GitHub file limit)
+models/classification/tuned_efficientnet_backbone.pth
+
+# Archive / Large files
+*.zip
+*.tar.gz
+*.7z
 
 # Virtual environments
 venv/
@@ -23,7 +25,7 @@ __pycache__/
 .ipynb_checkpoints/
 *.ipynb
 
-# IDE
+# IDE & AI Assistant
 .vscode/
 .idea/
 .claude/
@@ -37,14 +39,12 @@ model_report_*.txt
 model_results_*.json
 *_results.txt
 
-# Output files
+# Temp Output directories
 outputs/
 results/
-*.png
-*.jpg
-*.jpeg
+demo_outputs_*/
 
-# OS files
+# OS generated files
 .DS_Store
 Thumbs.db
 
@@ -52,7 +52,7 @@ Thumbs.db
 .env
 .env.local
 
-# Build
+# Build & packaging
 build/
 dist/
 *.egg-info/

@@ -42,10 +42,10 @@ class SkinDiseasePredictor:
     def load_models(self):
         """Load trained models (EfficientNet + U-Net)"""
         # Classification: EfficientNet
-        cls_path = 'models/classification/efficientnet_best.pth'
+        cls_path = 'models/classification/efficientnet_v5.pth'
 
         if os.path.exists(cls_path):
-            self.model = EfficientNetClassifier(num_classes=7).to(self.device)
+            self.model = EfficientNetClassifier(num_classes=7, backbone="efficientnet_b3").to(self.device)
             self.model.load_state_dict(
                 torch.load(cls_path, map_location=self.device)
             )

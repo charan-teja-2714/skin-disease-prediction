@@ -25,7 +25,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 # Load EfficientNet classifier
 model = EfficientNetClassifier(num_classes=7)
 model.load_state_dict(torch.load(
-    os.path.join(PROJECT_ROOT, "models", "classification", "efficientnet_best.pth"),
+    os.path.join(PROJECT_ROOT, "models", "classification", "efficientnet_v5.pth"),
     map_location=device
 ))
 model.to(device)
